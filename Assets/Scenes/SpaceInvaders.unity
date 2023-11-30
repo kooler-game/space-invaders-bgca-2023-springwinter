@@ -250,6 +250,7 @@ MonoBehaviour:
   - {fileID: 2109917237681542388, guid: 27e94f4ecf0af4d009bcffe9a0af1c2d, type: 3}
   - {fileID: 6275604649296494539, guid: 4e5d675ac29bf43c3aec72df9be6edab, type: 3}
   - {fileID: 7285536771704180421, guid: 39680838c4f9944b4a03e686512576d6, type: 3}
+  speed: 2
 --- !u!4 &815761224
 Transform:
   m_ObjectHideFlags: 0

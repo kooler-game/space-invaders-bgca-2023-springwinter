@@ -42,12 +42,18 @@ public class Invaders : MonoBehaviour
         {
             if (_direction == Vector3.right && invader.position.x >= rightEdge.x - 1f)
             {
-                _direction = Vector3.left;
+                AdvanceRow();
             }
             else if (_direction == Vector3.left && invader.position.x <= leftEdge.x + 1f)
             {
-                _direction = Vector3.right;
+                AdvanceRow();
             }
         }
+    }
+
+    private void AdvanceRow()
+    {
+        _direction.x *= -1;
+        this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - 1);
     }
 }
