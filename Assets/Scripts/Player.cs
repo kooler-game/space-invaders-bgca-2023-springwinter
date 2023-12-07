@@ -3,6 +3,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float speed = 1f;
+    public Laser laser;
 
     private void Update()
     {
@@ -17,5 +18,16 @@ public class Player : MonoBehaviour
         {
             this.transform.position += Vector3.right * speed * Time.deltaTime;
         }
+
+        // Laser Shooting
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            shoot();
+        }
+    }
+
+    private void shoot()
+    {
+        Laser laser = Instantiate(this.laser, this.transform);
     }
 }
