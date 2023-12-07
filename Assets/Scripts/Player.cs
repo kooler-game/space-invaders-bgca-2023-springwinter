@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
         }
         Invoke(nameof(setCooldown), firerate);
 
-        Laser laser = Instantiate(this.laser, this.transform);
+        Laser laser = Instantiate(this.laser, this.transform.position, Quaternion.identity);
         this.isCooldown = true;
     }
 
