@@ -4,6 +4,8 @@ public class Player : MonoBehaviour
 {
     public float speed = 1f;
     public Laser laser;
+    private bool isCooldown = false;
+    public float firerate = 2.0f;
 
     private void Update()
     {
@@ -20,7 +22,7 @@ public class Player : MonoBehaviour
         }
 
         // Laser Shooting
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
             shoot();
         }
@@ -28,6 +30,18 @@ public class Player : MonoBehaviour
 
     private void shoot()
     {
+        if (isCooldown)
+        {
+            return;
+        }
+        Invoke(nameof(setCooldown), firerate);
+
         Laser laser = Instantiate(this.laser, this.transform);
+        this.isCooldown = true;
+    }
+
+    private void setCooldown()
+    {
+        this.isCooldown = false;
     }
 }

@@ -411,6 +411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   laser: {fileID: 4413783723319188677, guid: 0d1491be5e0994f39a1ca6f4b6cad632, type: 3}
+  firerate: 1
 --- !u!1 &2046250338
 GameObject:
   m_ObjectHideFlags: 0
