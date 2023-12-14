@@ -30,6 +30,9 @@ public class Invaders : MonoBehaviour
 
         foreach (Transform invader in this.transform)
         {
+            if(!invader.gameObject.activeSelf) 
+                continue;
+
             if (_direction == Vector3.right && invader.position.x >= rightEdge.x - 1f)
             {
                 AdvanceRow();
