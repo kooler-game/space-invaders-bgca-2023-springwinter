@@ -12,13 +12,19 @@ public class Invaders : MonoBehaviour
     public int killCount = 0;
     private int totalInvadersCount => this.rows * this.cols;
     private float killedPercentage => (float)killCount / (float)totalInvadersCount;
+    private int totalAlive => totalInvadersCount - (killCount % totalInvadersCount);
 
     // public float speed = 1f;
     public AnimationCurve speed;
 
-    private void Awake()
+    public float firerate = 2.0f;
+
+    public Laser missilePrefab;
+
+    private void Start()
     {
         spawn();
+        InvokeRepeating(nameof(missileAttack), 2, firerate);
     }
 
     private void Update()
@@ -30,7 +36,7 @@ public class Invaders : MonoBehaviour
 
         foreach (Transform invader in this.transform)
         {
-            if(!invader.gameObject.activeSelf) 
+            if (!invader.gameObject.activeSelf)
                 continue;
 
             if (_direction == Vector3.right && invader.position.x >= rightEdge.x - 1f)
@@ -72,9 +78,12 @@ public class Invaders : MonoBehaviour
         this.transform.position = new Vector3(-offsetX + step / 2, this.transform.position.y);
     }
 
-    public bool isEmpty() {
-        foreach(Transform invader in this.transform) {
-            if(invader.gameObject.activeSelf) {
+    public bool isEmpty()
+    {
+        foreach (Transform invader in this.transform)
+        {
+            if (invader.gameObject.activeSelf)
+            {
                 return false;
             }
         }
@@ -82,7 +91,25 @@ public class Invaders : MonoBehaviour
         return true;
     }
 
-    private void onInvaderGetKilled() {
+    private void onInvaderGetKilled()
+    {
         this.killCount++;
+    }
+
+    private void missileAttack()
+    {
+        foreach (Transform invader in this.transform)
+        {
+            if (!invader.gameObject.activeSelf)
+            {
+                continue;
+            }
+
+            if (Random.value < (1.0f / (float)(totalAlive)))
+            {
+                Instantiate(missilePrefab, invader.position, Quaternion.identity);
+                break;
+            }
+        }
     }
 }

@@ -44,4 +44,13 @@ public class Player : MonoBehaviour
     {
         this.isCooldown = false;
     }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Missile"))
+        {
+            // TODO: Reduce HP
+            Destroy(this.gameObject);
+        }
+    }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 public class Laser : MonoBehaviour
 {
     public float speed = 5f;
-    private Vector3 _direction = Vector3.up;
+    public Vector3 _direction = Vector3.up;
 
     void Update()
     {
