@@ -8,6 +8,8 @@ public class Invader : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private int _animationFrame;
 
+    public System.Action onKilled;
+
     private void Awake()
     {
         this.spriteRenderer = GetComponent<SpriteRenderer>();
@@ -31,6 +33,7 @@ public class Invader : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.layer == LayerMask.NameToLayer("Laser")) {
+            this.onKilled.Invoke();
             this.gameObject.SetActive(false);
         }
     }
