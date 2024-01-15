@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 
     public void Update() {
         if(grid.isEmpty()) {
+            grid.reset();
             grid.spawn();
         }
     }

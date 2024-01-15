@@ -21,6 +21,8 @@ public class Invaders : MonoBehaviour
 
     public Laser missilePrefab;
 
+    private Vector3 defaultPosition => new Vector3(-(cols * 1.5f / 2) + step / 2, 8);
+
     private void Start()
     {
         spawn();
@@ -74,8 +76,16 @@ public class Invaders : MonoBehaviour
             }
         }
 
-        float offsetX = cols * 1.5f / 2;
-        this.transform.position = new Vector3(-offsetX + step / 2, this.transform.position.y);
+        reset();
+    }
+
+    public void reset() {
+        foreach (Transform invader in this.transform)
+        {
+            invader.gameObject.SetActive(true);
+        }
+
+        this.transform.position = defaultPosition;
     }
 
     public bool isEmpty()

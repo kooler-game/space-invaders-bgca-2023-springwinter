@@ -244,8 +244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469fb62935b244c3d804f833ad8d105b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rows: 3
-  cols: 10
+  rows: 2
+  cols: 2
   prefabs:
   - {fileID: 2109917237681542388, guid: 27e94f4ecf0af4d009bcffe9a0af1c2d, type: 3}
   - {fileID: 6275604649296494539, guid: 4e5d675ac29bf43c3aec72df9be6edab, type: 3}
