@@ -9,10 +9,19 @@ public class Invaders : MonoBehaviour
 
     private Vector3 _direction = Vector3.left;
 
-    public int killCount = 0;
+    private int killCount = 0;
+    public int KillCount
+    {
+        get { return killCount; }
+        set
+        {
+            killCount = value;
+            GameManager.Instance.UpdateKillCount(killCount);
+        }
+    }
     private int totalInvadersCount => this.rows * this.cols;
-    private float killedPercentage => (float)killCount / (float)totalInvadersCount;
-    private int totalAlive => totalInvadersCount - (killCount % totalInvadersCount);
+    private float killedPercentage => (float)KillCount / (float)totalInvadersCount;
+    private int totalAlive => totalInvadersCount - (KillCount % totalInvadersCount);
 
     // public float speed = 1f;
     public AnimationCurve speed;
@@ -70,7 +79,7 @@ public class Invaders : MonoBehaviour
 
                 // int prefabsType = (int)(Random.value * prefabs.Length);
                 // Invader invader = Instantiate(prefabs[prefabsType], this.transform);
-                Invader invader = Instantiate(prefabs[row], this.transform);
+                Invader invader = Instantiate(prefabs[row % prefabs.Length], this.transform);
                 invader.onKilled += this.onInvaderGetKilled;
                 invader.transform.localPosition = position;
             }
@@ -79,7 +88,8 @@ public class Invaders : MonoBehaviour
         reset();
     }
 
-    public void reset() {
+    public void reset()
+    {
         foreach (Transform invader in this.transform)
         {
             invader.gameObject.SetActive(true);
@@ -103,7 +113,7 @@ public class Invaders : MonoBehaviour
 
     private void onInvaderGetKilled()
     {
-        this.killCount++;
+        this.KillCount++;
     }
 
     private void missileAttack()
