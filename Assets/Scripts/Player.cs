@@ -47,10 +47,13 @@ public class Player : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Missile"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Missile") || other.gameObject.layer == LayerMask.NameToLayer("Invader"))
         {
             // TODO: Reduce HP
+            GameManager.Instance.GameOver();
             Destroy(this.gameObject);
+
+            return;
         }
     }
 }
