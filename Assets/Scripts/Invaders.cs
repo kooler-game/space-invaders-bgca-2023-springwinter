@@ -9,10 +9,19 @@ public class Invaders : MonoBehaviour
 
     private Vector3 _direction = Vector3.left;
 
-    public int killCount = 0;
+    private int _KillCount = 0;
+    public int KillCount {
+        get {
+            return _KillCount;
+        }
+        set {
+            _KillCount = value;
+            GameManager.instance.UpdateKillCount(_KillCount);
+        }
+    }
     private int totalInvadersCount => this.rows * this.cols;
-    private float killedPercentage => (float)killCount / (float)totalInvadersCount;
-    private int totalAlive => totalInvadersCount - (killCount % totalInvadersCount);
+    private float killedPercentage => (float)KillCount / (float)totalInvadersCount;
+    private int totalAlive => totalInvadersCount - (KillCount % totalInvadersCount);
 
     // public float speed = 1f;
     public AnimationCurve speed;
@@ -95,7 +104,7 @@ public class Invaders : MonoBehaviour
 
     private void onInvaderGetKilled()
     {
-        this.killCount++;
+        this.KillCount++;
     }
 
     private void missileAttack()
