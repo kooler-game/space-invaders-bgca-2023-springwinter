@@ -49,6 +49,7 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Missile"))
         {
+            GameManager.instance.GameOver();
             // TODO: Reduce HP
             Destroy(this.gameObject);
         }
