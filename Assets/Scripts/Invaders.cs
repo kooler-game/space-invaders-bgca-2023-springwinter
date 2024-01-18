@@ -21,6 +21,9 @@ public class Invaders : MonoBehaviour
 
     public Laser missilePrefab;
 
+    public int spawnPositionY = 8;
+    private Vector3 spawnPosition => new Vector3(-cols * 1.5f / 2 + step / 2, spawnPositionY);
+
     private void Start()
     {
         spawn();
@@ -74,8 +77,7 @@ public class Invaders : MonoBehaviour
             }
         }
 
-        float offsetX = cols * 1.5f / 2;
-        this.transform.position = new Vector3(-offsetX + step / 2, this.transform.position.y);
+        this.transform.position = spawnPosition;
     }
 
     public bool isEmpty()
