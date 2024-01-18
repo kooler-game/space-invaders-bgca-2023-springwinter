@@ -112,4 +112,12 @@ public class Invaders : MonoBehaviour
             }
         }
     }
+
+    public void reset()
+    {
+        foreach (Transform invader in this.transform)
+        {
+            Destroy(invader.gameObject);
+        }
+    }
 }
