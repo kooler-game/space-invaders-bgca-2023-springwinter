@@ -38,4 +38,8 @@ public class GameManager : MonoBehaviour
     public void Restart() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void BackToMainMenu() {
+        SceneManager.LoadScene("MainMenu");
+    }
 }
